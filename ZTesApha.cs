@@ -15,11 +15,7 @@ namespace ZTesApha {
         void Start() {
             mr = GetComponent<MeshRenderer>();
             orignalMaterial = mr.material;
-            aphaMetial.mainTexture = orignalMaterial.mainTexture;
-            Color c = orignalMaterial.color;
-            aphaMetial.color = new Color(c.r, c.g, c.b, apha);
-            aphaMetial.mainTextureOffset = orignalMaterial.mainTextureOffset;
-            aphaMetial.mainTextureScale = orignalMaterial.mainTextureScale;
+          
         }
 
         public void detecte() {
@@ -40,6 +36,11 @@ namespace ZTesApha {
         private void setDetected(bool b) {
             detected = b;
             mr.material = b ? aphaMetial : orignalMaterial;
+            mr.material.mainTexture = orignalMaterial.mainTexture;
+            Color c = orignalMaterial.color;
+            mr.material.color = new Color(c.r, c.g, c.b, apha);
+            mr.material.mainTextureOffset = orignalMaterial.mainTextureOffset;
+            mr.material.mainTextureScale = orignalMaterial.mainTextureScale;
         }
     }
 }
