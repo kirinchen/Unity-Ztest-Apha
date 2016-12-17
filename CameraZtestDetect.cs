@@ -18,7 +18,7 @@ namespace ZTesApha {
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, fwd, out hit, 100f)) {
                 ZTesApha mr = hit.collider.GetComponent<ZTesApha>();
-                if (mr != null) {
+                if (mr != null && mr.detectByCamera) {
                     mr.detecte();
 
                 }
