@@ -15,6 +15,7 @@ namespace ZTesApha {
         public bool autoInitMap = true;
         public bool applyOrgColor = true;
         public Material aphaMetial;
+        public Color aphaSpecifyColor = Color.white;
         public bool detectByCamera = true;
         private Dictionary<Renderer, Material> renderMap = new Dictionary<Renderer, Material>();
 
@@ -53,7 +54,7 @@ namespace ZTesApha {
                     Material orignalMaterial = renderMap[mr];
                     mr.material = b ? aphaMetial : orignalMaterial;
                     mr.material.mainTexture = orignalMaterial.mainTexture;
-                    Color c = Color.white;
+                    Color c = aphaSpecifyColor;
                     if (applyOrgColor) {
                         c = orignalMaterial.color;
                     }
