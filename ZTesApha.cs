@@ -18,8 +18,14 @@ namespace ZTesApha {
         public Color aphaSpecifyColor = Color.white;
         public bool detectByCamera = true;
         private Dictionary<Renderer, Material> renderMap = new Dictionary<Renderer, Material>();
+        private AphaGroup group;
+
+        void Awake() {
+            group = GetComponentInParent<AphaGroup>();
+        }
 
         void Start() {
+
             if (autoInitMap) {
                 refleshMap();
             }
@@ -33,6 +39,15 @@ namespace ZTesApha {
         }
 
         public void detecte() {
+            if (group != null) {
+                group.detecte();
+            } else {
+                _detecte();
+            }
+
+        }
+
+        internal void _detecte() {
             startAt = Time.time;
             if (!detected) {
                 StartCoroutine(cutDown());
@@ -61,7 +76,7 @@ namespace ZTesApha {
                     mr.material.color = new Color(c.r, c.g, c.b, apha);
                     mr.material.mainTextureOffset = orignalMaterial.mainTextureOffset;
                     mr.material.mainTextureScale = orignalMaterial.mainTextureScale;
-                } 
+                }
             }
         }
 
